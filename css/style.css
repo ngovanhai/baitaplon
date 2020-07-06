@@ -1,0 +1,10 @@
+.label {
+    margin: 20px;
+    text-align: center;
+    background-color: antiquewhite;
+    height: 70px;
+}
+.content {
+    color: white;
+    padding-top: 15px;
+}
