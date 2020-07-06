@@ -30,12 +30,14 @@
       <div>
         <img
           src="./media/image/banner-img-1.jpg"
-          style="width: 1905px; height: 430px;"
+          style="width: 100%;"
         /> 
-        <div class="container" style="overflow: auto;">
+        <div class="container"  >
           <div class="label"><h2 class="content">TUYỂN SINH</h2></div>
-          <div class="hethongtuyensinh"></div>
-          <div class="form-quetions"></div>
+          <div class="row">
+          <div class="hethongtuyensinh col-9"></div>
+          <div class="form-quetions col-3"></div>
+        </div>
         </div>
         
       </div>
@@ -51,6 +53,9 @@
     <script>
       $(document).ready(function () {
         $("header").loadHTML("./public/header/index.html");
+      });
+      $(document).ready(function () {
+        $(".hethongtuyensinh").appendHTML("./page/home/noidung/index.html");
       });
       $(document).ready(function () {
         $(".form-quetions").loadHTML("./page/home/formquestion/index.html");
