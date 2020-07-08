@@ -52,7 +52,7 @@ $(document).ready(function () {
           console.log(data);
           if (email == data.email && password == data.password) {
             if (data.permission == 1) {
-              window.location.href = "./../index.html";
+              window.location.href = "./../admin/dashboard/index.html";
             } else if (data.permission == 2) {
               window.location.href = "https://www.facebook.com/";
               localStorage.setItem();
