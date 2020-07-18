@@ -20,50 +20,24 @@ $(document).ready(function () {
     var password = $("#password").val().trim();
 
     if (email != "" && password != "") {
-      //   $.ajax({
-      //     url: "http://localhost:3000/1",
-      //     type: "POST",
-      //     dataType: "json",
-      //     success: function (data) {
-      //       $.each(data, function (key, value) {
-      //         console.log(value);
+        $.ajax({
+          url: "http://localhost:3000/1",
+          type: "POST",
+          dataType: "json",
+          success: function (data) {
+            $.each(data, function (key, value) {
+              console.log(value);
 
-      //         if (email == value.email && password == value.password) {
-      //           error = false;
-      //         }
-      //       });
-      //       if (error == false) {
-      //         document.location = "./../index.html";
-      //       }
-      //     },
-      //   });
-
-      $.ajax({
-        url: "http://localhost:3000/1",
-        type: "GET",
-        data: {
-          format: "json",
-        },
-        error: function () {
-          alert("loi");
-        },
-        dataType: "jsonp",
-        success: function (data) {
-          console.log(data);
-          if (email == data.email && password == data.password) {
-            if (data.permission == 1) {
-              window.location.href = "./../admin/dashboard/index.html";
-            } else if (data.permission == 2) {
-              window.location.href = "https://www.facebook.com/";
-              localStorage.setItem();
+              if (email == value.email && password == value.password) {
+                error = false;
+              }
+            });
+            if (error == false) {
+              document.location = "./../index.html";
             }
-          } else {
-            $("#email").val("");
-            $("#password").val("");
-            $("#errors").text("sai mk hoac tk");
-          }
-        },
-      });
+          },
+        });
+
     }
   });
 });
