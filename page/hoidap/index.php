@@ -187,7 +187,7 @@ $(document).ready(function(){
         messages :{
             select: { valueNotEquals: "Chưa chọn ngành" },
             PostUser : {
-                required : "Chưa nhập số điện thoại"
+                required : "Chưa nhập họ tên"
             },
             PostTitle : {
                 required : "Chưa nhập tiêu đề hỏi",
