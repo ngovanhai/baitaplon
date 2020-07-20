@@ -1,47 +1,55 @@
 
-
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<style>
+  
+label.error{
+    color: red;
+    font-size: 13px;
+}
+</style>
 <link rel="stylesheet" href="./form.css">
 <div class="title typescale-4 text-center">Đặt câu hỏi mới</div>
 <div class="qa-form">
   <form
-    class="forms ng-pristine ng-invalid ng-invalid-required"
-    action="http://ts.tlu.edu.vn/"
     method="POST"
+    id="question"
+    action=""
   >
     <div class="form-group">
-      <label class="required">Họ tên</label>
+      <label>Họ tên</label>
       <input
         type="text"
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-        ng-model="qa.PostUser"
         id="PostUser"
+        name="PostUser" required
       />
     </div>
     <div class="form-group">
-      <label class="required">Địa chỉ</label>
+      <label >Địa chỉ</label>
       <input
         type="text"
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
         id="PostUserAddress"
+        name="PostUserAddress" required
       />
     </div>
     <div class="form-group">
-      <label class="required">Email</label>
+      <label >Email</label>
       <input
         type="text"
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-        ng-model="qa.PostUserMail"
         id="PostUserMail"
+        name="PostUserMail" required
       />
     </div>
     <div class="form-group">
-      <label class="required">Ngành tuyển sinh</label>
+      <label required>Ngành tuyển sinh</label>
       <select
-        ng-model="mdlCate"
-        ng-change="CateChanged(mdlCate)"
+
+      name="select"
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
         id="mdlCate"
-        data-ng-options="item as item.CateName for item in FaqCategories"
         ><option value="" class="" selected="selected"
           >--- Lĩnh vực ---</option
         ><option label="Kỹ thuật cơ điện tử" value="object:63"
@@ -99,22 +107,23 @@
       >
     </div>
     <div class="form-group">
-      <label class="required">Tiêu đề hỏi</label>
+      <label >Tiêu đề hỏi</label>
       <input
         type="text"
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-        ng-model="qa.PostTitle"
-        id="PostTitle"
+        id="PostTitle" 
+        name="PostTitle" required
       />
     </div>
     <div class="form-group">
-      <label class="required">Câu hỏi</label>
+      <label>Câu hỏi</label>
       <textarea
         class="form-control ng-pristine ng-untouched ng-valid ng-empty"
         cols="10"
         rows="4"
-        ng-model="qa.PostContent"
         id="PostContent"
+        name="PostContent"
+        required
       ></textarea>
     </div>
     <table align="center">
@@ -126,10 +135,10 @@
     </table>
     <div style="margin-top: 3px; text-align: center;">
       <button
-        type="button"
+        type="submit"
         class="btn btn-outline-dark2"
-        ng-click="SendQA()"
         style="width: 150px; margin-right: 12px;"
+        id="send"
       >
         Gửi câu hỏi
       </button>
@@ -137,3 +146,68 @@
   </form>
 </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+  return arg !== value;
+ }, "Value must not equal arg.");
+    $("#question").validate({
+        rules : {
+            PostUser : {
+                required : true,
+            },
+            PostTitle : {
+                required : true,
+            },
+            PostContent : {
+                required : true,
+  
+            },
+            PostUserAddress : {
+              required : true,
+              minlength : 10
+            },
+            PostUserMail : {
+                required: true,
+                email: true
+            },
+            // select :  { valueNotEquals: "" }
+        },
+        messages :{
+            // select: { valueNotEquals: "Chưa chọn ngành" },
+            PostUser : {
+                required : "Chưa nhập họ tên"
+            },
+            PostUserAddress : "Chưa nhập địa chỉ",
+            PostTitle : {
+                required : "Chưa nhập tiêu đề hỏi",
+            },
+            PostContent : {
+                required : "Chưa nhập câu hỏi",
+  
+                },
+
+            PostUserMail : {
+                required : "Chưa nhập email",
+                email : "Sai email hoặc không đúng định dạng"
+            }
+
+
+        }
+    });
+    $('#send').on("click", function (e) {
+
+        if ($("#question").valid() == false) {
+          return false
+        } else {
+          e.preventDefault()
+          const ten = $("#PostUser").val();
+				  const PostUserAddress = $("#PostUserAddress").val();
+          const select = $("#mdlCate").find(":selected").val();
+				console.log(ten,PostUserAddress,select);
+        }		
+        })
+})
+</script>
+
+</script>

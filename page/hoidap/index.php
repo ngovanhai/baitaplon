@@ -8,20 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/cab277e3ef.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="./../../css/header.css" />
     <link rel="stylesheet" href="./../../css/footer.css" />
+    
 </head>
-
+<style>
+   label.error{
+    color : red;
+    font-size : 12px;
+}
+</style>
 <body>
     <?php
       include("../../../baitaplon/public/header/index.php");
       ?>
-    <div class="container">
-        <form action="" method="post">
+ <div class="container">
+        <form action="" method="post" id="question">
             <div class="form-question form-custom section-library-bgimg"
                 style="margin-bottom:30px;padding-bottom:20px;padding-top:20px">
                 <p class="divHead hidden ng-binding"></p>
@@ -34,15 +38,18 @@
                                 <label>Họ tên</label><span style="color:Red;">(*)</span>
                                 <input type="text"
                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                    name="" required="" ng-model="q.PostUser" id="PostUser">
+                                    name="PostUser" id="PostUser" required>
                             </div>
                         </div>
+
+
                         <div class="col-md-6 col-lg-3">
                             <div class="form-group">
                                 <label>Ngành tuyển sinh</label><span style="color:Red;">(*)</span>
-                                <select ng-model="mdlCate"
+                                <select
                                     class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-                                    data-ng-options="c as c.CateName for c in FaqCategories">
+                                    data-ng-options="c as c.CateName for c in FaqCategories"
+                                    name="select">
                                     <option value="" class="" selected="selected">--- Lĩnh vực ---</option>
                                     <option label="Kỹ thuật cơ điện tử" value="object:10">Kỹ thuật cơ điện tử</option>
                                     <option label="Kỹ thuật ô tô" value="object:11">Kỹ thuật ô tô</option>
@@ -84,7 +91,7 @@
                                 <label>Tiêu đề hỏi</label><span style="color:Red;">(*)</span>
                                 <input type="text"
                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                    name="" required="" ng-model="q.PostTitle" id="PostTitle">
+                                    name="PostTitle"  id="PostTitle" required>
                             </div>
                         </div>
                     </div>
@@ -97,7 +104,7 @@
                                         <label>Số điện thoại</label><span style="color:Red;">(*)</span>
                                         <input type="text"
                                             class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                            name="" required="" ng-model="q.PostUserTel" id="PostUserTel">
+                                            name="PostUserTel"  id="PostUserTel" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-12">
@@ -105,7 +112,7 @@
                                         <label>Email</label><span style="color:Red;">(*)</span>
                                         <input type="text"
                                             class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                            name="" required="" ng-model="q.PostUserMail" id="PostUserMail">
+                                            name="PostUserMail"  id="PostUserMail" required>
                                     </div>
                                 </div>
                             </div>
@@ -115,17 +122,8 @@
                                 <label>Nội dung câu hỏi</label>
 
                                 <textarea class="form-control ng-pristine ng-untouched ng-valid ng-empty" rows="4"
-                                    cols="7" style="min-height:122px" ng-model="q.PostContent"
-                                    id="PostContent"></textarea>
-                                <div style="display:none">
-                                    <script type="text/javascript"
-                                        src="./Cổng thông tin tuyển sinh _ Hỏi đáp_files/tinymce.min.js"></script>
-                                    <script type="text/javascript"
-                                        src="./Cổng thông tin tuyển sinh _ Hỏi đáp_files/tinymce.js"></script>
-                                    <textarea ui-tinymce="demo.tinymceOptions" ng-model="q.PostContent"
-                                        ng-change="demo.updateHtml()"
-                                        class="ng-pristine ng-untouched ng-valid ng-empty"></textarea>
-                                </div>
+                                    cols="7" style="min-height:122px" name="PostContent"
+                                    id="PostContent" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -135,22 +133,7 @@
                             <tbody>
                                 <tr>
                                     <td style="text-align:center">
-                                        <table align="center">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="./Cổng thông tin tuyển sinh _ Hỏi đáp_files/VerImage.ashx"
-                                                            id="captchaCode" alt="" class="captcha">
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:center">
-                                        <button type="button" class="btn btn btn-primary btn-custom">Gửi câu
+                                        <button type="submit" class="btn btn btn-primary btn-custom">Gửi câu
                                             hỏi</button>
                                     </td>
                                 </tr>
@@ -170,10 +153,65 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="./../../js/jquery.includeHTML.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+  return arg !== value;
+ }, "Value must not equal arg.");
+    $("#question").validate({
+        rules : {
+            PostUser : {
+                required : true,
+            },
+            PostTitle : {
+                required : true,
+            },
+            PostContent : {
+                required : true,
+                minlength : 100
+            },
+            PostUserTel : {
+                required: true,
+                minlength: 10,
+                maxlength : 10,
+                digits : true
+
+            },
+            PostUserMail : {
+                required: true,
+                email: true
+            },
+            select :  { valueNotEquals: "" }
+
+        },
+        messages :{
+            select: { valueNotEquals: "Chưa chọn ngành" },
+            PostUser : {
+                required : "Chưa nhập số điện thoại"
+            },
+            PostTitle : {
+                required : "Chưa nhập tiêu đề hỏi",
+            },
+            PostContent : {
+                required : "Chưa nhập câu hỏi",
+                minlength : "Câu hỏi quá ngắn"
+            },
+            PostUserTel : {
+                required : "Chưa nhập số điện thoại",
+                minlength : "Số điện thoại không đúng quy định",
+                maxlength : "Số điện thoại không đúng quy định",
+                digits : "Số điện thoại không đúng quy định"
+            },
+            PostUserMail : {
+                required : "Chưa nhập email",
+                email : "Sai email hoặc không đúng định dạng"
+            }
+
+
+        }
+    })
+})
+</script>
 </body>
 
 </html>

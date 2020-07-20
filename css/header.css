@@ -980,3 +980,7 @@ img {vertical-align: middle;}
 
 /* -----------------item-tin--------------------- */
 
+label.error{
+    color: red;
+    font-size: 20px;
+}
