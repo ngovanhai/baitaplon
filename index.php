@@ -18,11 +18,11 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/cab277e3ef.js"></script>
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
-    <link rel="stylesheet" href="./css/formQuestions.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/noidung.css">
+    <link rel="stylesheet" href="./baitaplon/css/header.css" />
+    <link rel="stylesheet" href="./baitaplon/css/footer.css" />
+    <link rel="stylesheet" href="./baitaplon/css/formQuestions.css">
+    <link rel="stylesheet" href="./css/test.css">
+    <link rel="stylesheet" href="./baitaplon/css/noidung.css">
   </head>
 
   <body>
@@ -31,9 +31,7 @@
       require("./public/header/index.php");
       ?>
       <div>
-      <?php
-        require("./public/slideshow/slideshow.php");
-      ?>
+    <img src="./media/image/banner-img-1.jpg" alt="" style="width:1600px">
         <div class="container"  >
           <div class="label"><h2 class="content">TUYỂN SINH</h2></div>
           <div class="row">

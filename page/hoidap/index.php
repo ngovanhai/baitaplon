@@ -150,68 +150,7 @@
       include("../../../baitaplon/public/footer/index.php");
       ?>
     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript">
-$(document).ready(function(){
-    $.validator.addMethod("valueNotEquals", function(value, element, arg){
-  return arg !== value;
- }, "Value must not equal arg.");
-    $("#question").validate({
-        rules : {
-            PostUser : {
-                required : true,
-            },
-            PostTitle : {
-                required : true,
-            },
-            PostContent : {
-                required : true,
-                minlength : 100
-            },
-            PostUserTel : {
-                required: true,
-                minlength: 10,
-                maxlength : 10,
-                digits : true
-
-            },
-            PostUserMail : {
-                required: true,
-                email: true
-            },
-            select :  { valueNotEquals: "" }
-
-        },
-        messages :{
-            select: { valueNotEquals: "Chưa chọn ngành" },
-            PostUser : {
-                required : "Chưa nhập họ tên"
-            },
-            PostTitle : {
-                required : "Chưa nhập tiêu đề hỏi",
-            },
-            PostContent : {
-                required : "Chưa nhập câu hỏi",
-                minlength : "Câu hỏi quá ngắn"
-            },
-            PostUserTel : {
-                required : "Chưa nhập số điện thoại",
-                minlength : "Số điện thoại không đúng quy định",
-                maxlength : "Số điện thoại không đúng quy định",
-                digits : "Số điện thoại không đúng quy định"
-            },
-            PostUserMail : {
-                required : "Chưa nhập email",
-                email : "Sai email hoặc không đúng định dạng"
-            }
-
-
-        }
-    })
-})
-</script>
+<script src="./../../../baitaplon/js/sendmail.js"></script>
 </body>
 
 </html>

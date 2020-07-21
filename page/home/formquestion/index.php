@@ -44,6 +44,15 @@ label.error{
       />
     </div>
     <div class="form-group">
+      <label >Số điện thoại</label>
+      <input
+        type="text"
+        class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+        id="PostUserTel"
+        name="PostUserTel" required
+      />
+    </div>
+    <div class="form-group">
       <label required>Ngành tuyển sinh</label>
       <select
 
@@ -146,9 +155,11 @@ label.error{
   </form>
 </div>
 </div>
-<script type="text/javascript">
+<script src="./../../../../baitaplon/js/sendmail.js"></script>
+
+<!-- <script type="text/javascript">
 $(document).ready(function(){
-    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+$.validator.addMethod("valueNotEquals", function(value, element, arg){
   return arg !== value;
  }, "Value must not equal arg.");
     $("#question").validate({
@@ -167,16 +178,29 @@ $(document).ready(function(){
               required : true,
               minlength : 10
             },
+            PostUserTel : {
+                required: true,
+                minlength: 10,
+                maxlength : 10,
+                digits : true
+
+            },
             PostUserMail : {
                 required: true,
                 email: true
             },
-            // select :  { valueNotEquals: "" }
+            select :  { valueNotEquals: "" }
         },
         messages :{
-            // select: { valueNotEquals: "Chưa chọn ngành" },
+            select: { valueNotEquals: "Chưa chọn ngành" },
             PostUser : {
                 required : "Chưa nhập họ tên"
+            },
+            PostUserTel : {
+                required : "Chưa nhập số điện thoại",
+                minlength : "Số điện thoại không đúng quy định",
+                maxlength : "Số điện thoại không đúng quy định",
+                digits : "Số điện thoại không đúng quy định"
             },
             PostUserAddress : "Chưa nhập địa chỉ",
             PostTitle : {
@@ -195,19 +219,26 @@ $(document).ready(function(){
 
         }
     });
-    $('#send').on("click", function (e) {
-
+    $('#question').submit(function(e) {
+      e.preventDefault();
         if ($("#question").valid() == false) {
           return false
         } else {
-          e.preventDefault()
-          const ten = $("#PostUser").val();
-				  const PostUserAddress = $("#PostUserAddress").val();
-          const select = $("#mdlCate").find(":selected").val();
-				console.log(ten,PostUserAddress,select);
-        }		
-        })
+          console.log($(this).serialize());
+          $.ajax({
+            type: "POST",
+            url : "./../../../../baitaplon/lib/email.php",
+            data : $("#question").serialize(),
+            success : function(data){
+
+              setTimeout(function(){ alert("gửi email thành công"); }, 3000);
+              $('#question').trigger("reset");
+          },
+          error:function(){}
+          })
+  }		
 })
-</script>
+})
+</script> -->
 
 </script>

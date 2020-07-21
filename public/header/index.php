@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/formQuestions.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/noidung.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    
   </head>
   </head>
   <body>
